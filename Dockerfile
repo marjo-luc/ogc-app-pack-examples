@@ -4,10 +4,6 @@ ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Update Conda and create a new environment based on the environment.yml file.
-RUN conda env update --quiet --solver libmamba -n dem -f /tmp/environment.yml && \
-    conda clean --all
-
 # Copy application files to the /opt directory.
 COPY print_message.py /app/print_message.py
 
