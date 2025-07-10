@@ -1,0 +1,26 @@
+# Input params for OGC application package generator
+# The information provided in this file supports CWL and OGC best practices
+algorithm_description: Takes in a string and prints it.
+algorithm_name: print-message
+algorithm_version: main
+keywords: ogc
+code_repository: https://github.com/marjo-luc/ogc-app-pack-examples.git
+citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
+author: Marjorie Lucas
+contributor: Marjorie Lucas
+license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
+release_notes: None
+run_command: /app/print_message.py
+ram_min: 1 # mebibytes
+cores_min: 1
+outdir_max: 1 # mebibytes
+
+inputs:
+  - name: message
+    doc: Message to print
+    label: message
+    type: string
+
+outputs:
+  - name: out
+    type: Directory
