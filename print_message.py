@@ -1,4 +1,5 @@
 import argparse
+import os
 
 def main():
     parser = argparse.ArgumentParser()
@@ -9,3 +10,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    # Create output directory
+    os.makedirs('output_message', exist_ok=True)

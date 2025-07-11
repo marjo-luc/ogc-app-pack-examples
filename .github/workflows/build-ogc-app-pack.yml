@@ -23,7 +23,7 @@ jobs:
             # Specify action inputs
             algorithm-configuration-path: data/algorithm_config.yml
             dockerfile-path: Dockerfile
-            deploy-app-pack: true
+            deploy-app-pack: false
             app-pack-register-endpoint: https://api.dit.maap-project.org/api/ogc/processes
           env:
             # MAAP PGT token is required to deploy the process
