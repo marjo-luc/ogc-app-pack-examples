@@ -1,0 +1,30 @@
+algorithm_description: Writes an input string to a text file.
+algorithm_name: write-string-to-file
+algorithm_version: main
+keywords: ogc
+code_repository: https://github.com/marjo-luc/ogc-app-pack-examples.git
+citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
+author: Marjorie Lucas
+contributor: Marjorie Lucas
+license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
+release_notes: None
+run_command: write_string_to_file.py
+ram_min: 1 # mebibytes
+cores_min: 1
+outdir_max: 1 # mebibytes
+
+inputs:
+  - name: text
+    doc: The string to write to the file
+    label: Input text
+    type: string
+    default: Hello, world!
+  - name: output_file
+    doc: Path to the output text file
+    label: Output filename
+    type: string?
+    default: output.txt
+
+outputs:
+  - name: out
+    type: Directory
