@@ -1,5 +1,5 @@
 FROM python:3.12-slim
 
-COPY write_string_to_file.py /usr/local/bin/write_string_to_file.py
+COPY ./write_string_to_file/write_string_to_file.py /usr/local/bin/write_string_to_file.py
 
 RUN chmod +x /usr/local/bin/write_string_to_file.py
