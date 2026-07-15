@@ -6,10 +6,15 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libexpat1 \
     && rm -rf /var/lib/apt/lists/*
 
-# rasterio wheels bundle GDAL with /vsicurl support, so the HTTPS COG assets
-# referenced by the STAC Item can be read directly -- no system GDAL needed.
-RUN pip install --no-cache-dir rasterio pystac
+# rasterio/rio-stac wheels bundle GDAL with /vsis3 + /vsicurl support, so the
+# STAC assets can be read/written directly -- no system GDAL needed. maap-py
+# handles STAC asset downloads; papermill executes the notebook.
+RUN pip install --no-cache-dir \
+    rasterio rio-stac pystac-client maap-py papermill ipykernel \
+    && python3 -m ipykernel install --name python3
 
-COPY ./stac_clip/stac_clip.py /usr/local/bin/stac_clip.py
+# Notebook and its entrypoint wrapper
+COPY ./stac_clip/stac_clip.ipynb /app/stac_clip.ipynb
+COPY ./stac_clip/run.py /usr/local/bin/run.py
 
-RUN chmod +x /usr/local/bin/stac_clip.py
+RUN chmod +x /usr/local/bin/run.py

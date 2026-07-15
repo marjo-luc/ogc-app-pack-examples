@@ -1,4 +1,4 @@
-algorithm_description: Clips a STAC Item's raster asset to a bounding box and emits a new STAC Item describing the clipped output.
+algorithm_description: Searches the MAAP STAC catalog for a granule, downloads a raster asset, clips it to a bounding box, and emits a new STAC Item describing the clipped output.
 algorithm_name: stac-clip
 algorithm_version: main
 keywords: ogc, stac, raster
@@ -8,27 +8,32 @@ author: mlucas
 contributor: mlucas
 license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 release_notes: None
-run_command: stac_clip.py
+run_command: run.py
 ram_min: 5 # mebibytes
 cores_min: 1
-outdir_max: 100 # mebibytes
+outdir_max: 10 # mebibytes
 
 inputs:
-  - name: stac_item_url
-    doc: URL to the input STAC Item JSON
-    label: STAC Item URL
+  - name: collection_id
+    doc: STAC collection id containing the granule
+    label: Collection id
     type: string
-    default: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
+    default: ESACCI_Biomass_L4_AGB_V4_100m
+  - name: granule_id
+    doc: STAC item (granule) id to clip
+    label: Granule id
+    type: string
+    default: S50W080_ESACCI-BIOMASS-L4-AGB-MERGED-100m-2020-fv4.0
   - name: asset_name
-    doc: Name of the asset to clip
+    doc: Name of the raster asset to clip
     label: Asset name
     type: string?
-    default: B04
+    default: estimates
   - name: bbox
     doc: Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326
     label: Bounding box
     type: string
-    default: -122.55 37.70 -122.35 37.85
+    default: -78 -58 -76 -56
   - name: output_file
     doc: Name of the output COG
     label: Output filename

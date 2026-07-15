@@ -2,25 +2,30 @@ cwlVersion: v1.2
 $graph:
 - class: Workflow
   label: stac-clip
-  doc: Clips a STAC Item's raster asset to a bounding box and emits a new STAC Item
-    describing the clipped output.
+  doc: Searches the MAAP STAC catalog for a granule, downloads a raster asset, clips
+    it to a bounding box, and emits a new STAC Item describing the clipped output.
   id: stac-clip
   inputs:
-    stac_item_url:
-      doc: URL to the input STAC Item JSON
-      label: STAC Item URL
+    collection_id:
+      doc: STAC collection id containing the granule
+      label: Collection id
       type: string
-      default: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
+      default: ESACCI_Biomass_L4_AGB_V4_100m
+    granule_id:
+      doc: STAC item (granule) id to clip
+      label: Granule id
+      type: string
+      default: S50W080_ESACCI-BIOMASS-L4-AGB-MERGED-100m-2020-fv4.0
     asset_name:
-      doc: Name of the asset to clip
+      doc: Name of the raster asset to clip
       label: Asset name
       type: string?
-      default: B04
+      default: estimates
     bbox:
       doc: Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326
       label: Bounding box
       type: string
-      default: -122.55 37.70 -122.35 37.85
+      default: -78 -58 -76 -56
     output_file:
       doc: Name of the output COG
       label: Output filename
@@ -34,7 +39,8 @@ $graph:
     process:
       run: '#main'
       in:
-        stac_item_url: stac_item_url
+        collection_id: collection_id
+        granule_id: granule_id
         asset_name: asset_name
         bbox: bbox
         output_file: output_file
@@ -48,33 +54,39 @@ $graph:
     NetworkAccess:
       networkAccess: true
     ResourceRequirement:
-      ramMin: 5
+      ramMin: 2048
       coresMin: 1
-      outdirMax: 100
-  baseCommand: stac_clip.py
+      outdirMax: 500
+  baseCommand: run.py
   inputs:
-    stac_item_url:
+    collection_id:
       type: string
       inputBinding:
         position: 1
-        prefix: --stac_item_url
-      default: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
+        prefix: --collection_id
+      default: ESACCI_Biomass_L4_AGB_V4_100m
+    granule_id:
+      type: string
+      inputBinding:
+        position: 2
+        prefix: --granule_id
+      default: S50W080_ESACCI-BIOMASS-L4-AGB-MERGED-100m-2020-fv4.0
     asset_name:
       type: string?
       inputBinding:
-        position: 2
+        position: 3
         prefix: --asset_name
-      default: B04
+      default: estimates
     bbox:
       type: string
       inputBinding:
-        position: 3
+        position: 4
         prefix: --bbox
-      default: -122.55 37.70 -122.35 37.85
+      default: -78 -58 -76 -56
     output_file:
       type: string?
       inputBinding:
-        position: 4
+        position: 5
         prefix: --output_file
       default: clipped.tif
   outputs:
@@ -90,7 +102,7 @@ s:contributor:
   s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: 92ff84c29d248079ccbbfcac4368d6a18bc997a6
+s:commitHash: 30413f08847a7bfae47b4fecc7a9b89ede5e421b
 s:dateCreated: 2026-07-15
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
