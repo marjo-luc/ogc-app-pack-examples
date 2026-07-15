@@ -1,0 +1,30 @@
+algorithm_description: Converts an input image to greyscale using GDAL.
+algorithm_name: color-to-greyscale
+algorithm_version: main
+keywords: ogc, gdal
+code_repository: https://github.com/marjo-luc/ogc-app-pack-examples.git
+citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
+author: mlucas
+contributor: mlucas
+license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
+release_notes: None
+run_command: run.py
+ram_min: 5 # mebibytes
+cores_min: 1
+outdir_max: 10 # mebibytes
+
+inputs:
+  - name: input_image
+    doc: Input image to convert to greyscale
+    label: Input image
+    type: File
+    default: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/color_to_greyscale/nasa_maap_logo.png
+  - name: output_file
+    doc: Name of the output greyscale image
+    label: Output filename
+    type: string?
+    default: greyscale.tif
+
+outputs:
+  - name: out
+    type: Directory

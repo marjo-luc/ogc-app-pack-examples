@@ -1,0 +1,4 @@
+input_image:
+  class: File
+  path: nasa_maap_logo.png
+output_file: greyscale.tif

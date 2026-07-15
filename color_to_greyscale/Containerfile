@@ -1,0 +1,15 @@
+FROM ghcr.io/osgeo/gdal:ubuntu-small-latest
+
+# GDAL Python bindings ship with the base image; add pip + the notebook runtime.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir --break-system-packages numpy papermill ipykernel \
+    && python3 -m ipykernel install --name python3
+
+# Notebook and its entrypoint wrapper
+COPY ./color_to_greyscale/color_to_greyscale.ipynb /app/color_to_greyscale.ipynb
+COPY ./color_to_greyscale/run.py /usr/local/bin/run.py
+
+RUN chmod +x /usr/local/bin/run.py
