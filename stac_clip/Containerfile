@@ -1,0 +1,9 @@
+FROM python:3.12-slim
+
+# rasterio wheels bundle GDAL with /vsicurl support, so the HTTPS COG assets
+# referenced by the STAC Item can be read directly -- no system GDAL needed.
+RUN pip install --no-cache-dir rasterio pystac
+
+COPY ./stac_clip/stac_clip.py /usr/local/bin/stac_clip.py
+
+RUN chmod +x /usr/local/bin/stac_clip.py

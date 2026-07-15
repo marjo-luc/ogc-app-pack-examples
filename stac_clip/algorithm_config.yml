@@ -1,0 +1,40 @@
+algorithm_description: Clips a STAC Item's raster asset to a bounding box and emits a new STAC Item describing the clipped output.
+algorithm_name: stac-clip
+algorithm_version: main
+keywords: ogc, stac, raster
+code_repository: https://github.com/marjo-luc/ogc-app-pack-examples.git
+citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
+author: mlucas
+contributor: mlucas
+license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
+release_notes: None
+run_command: stac_clip.py
+ram_min: 512 # mebibytes
+cores_min: 1
+outdir_max: 100 # mebibytes
+
+inputs:
+  - name: stac_item_url
+    doc: URL to the input STAC Item JSON
+    label: STAC Item URL
+    type: string
+    default: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
+  - name: asset_name
+    doc: Name of the asset to clip
+    label: Asset name
+    type: string?
+    default: B04
+  - name: bbox
+    doc: Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326
+    label: Bounding box
+    type: string
+    default: -122.55 37.70 -122.35 37.85
+  - name: output_file
+    doc: Name of the output COG
+    label: Output filename
+    type: string?
+    default: clipped.tif
+
+outputs:
+  - name: out
+    type: Directory

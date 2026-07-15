@@ -1,0 +1,4 @@
+stac_item_url: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
+asset_name: B04
+bbox: -122.55 37.70 -122.35 37.85
+output_file: clipped.tif
