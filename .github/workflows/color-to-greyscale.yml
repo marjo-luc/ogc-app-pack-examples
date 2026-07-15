@@ -6,11 +6,11 @@ on:
     paths:
       - 'color_to_greyscale/**'
       - '.github/workflows/color-to-greyscale.yml'
-      - '.github/workflows/build-app-pack.yml'
+      - '.github/workflows/generate-app-pack.yml'
 
 jobs:
   build:
-    uses: ./.github/workflows/build-app-pack.yml
+    uses: ./.github/workflows/generate-app-pack.yml
     with:
       example-dir: color_to_greyscale
     secrets: inherit
