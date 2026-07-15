@@ -1,5 +1,11 @@
 FROM python:3.12-slim
 
+# rasterio's bundled GDAL expects a few ubiquitous system libs to be present;
+# python:3.12-slim omits libexpat1, so install it here.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libexpat1 \
+    && rm -rf /var/lib/apt/lists/*
+
 # rasterio wheels bundle GDAL with /vsicurl support, so the HTTPS COG assets
 # referenced by the STAC Item can be read directly -- no system GDAL needed.
 RUN pip install --no-cache-dir rasterio pystac
