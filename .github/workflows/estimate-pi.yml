@@ -1,16 +1,16 @@
-name: fortran-example
+name: estimate-pi
 on:
   push:
     branches:
       - main
     paths:
-      - 'fortran_example/**'
-      - '.github/workflows/fortran-example.yml'
+      - 'estimate_pi/**'
+      - '.github/workflows/estimate-pi.yml'
       - '.github/workflows/generate-app-pack.yml'
 
 jobs:
   build:
     uses: ./.github/workflows/generate-app-pack.yml
     with:
-      example-dir: fortran_example
+      example-dir: estimate_pi
     secrets: inherit
