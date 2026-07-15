@@ -123,8 +123,8 @@ def main():
     )
     parser.add_argument(
         "--asset_name",
-        default="red",
-        help="Name of the asset to clip (default: red).",
+        default="B04",
+        help="Name of the asset to clip (default: B04).",
     )
     parser.add_argument(
         "--bbox",
