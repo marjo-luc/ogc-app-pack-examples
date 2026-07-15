@@ -1,0 +1,42 @@
+name: Build OGC App Pack
+on:
+  workflow_call:
+    inputs:
+      example-dir:
+        description: Path to the example directory to build and deploy
+        required: true
+        type: string
+    secrets:
+      MAAP_TOKEN:
+        required: true
+
+concurrency:
+  # Serialize runs across all callers: the generator commits CWL back to
+  # main, so two examples building at once could race on the push.
+  group: ogc-app-pack-deploy
+  cancel-in-progress: false
+
+jobs:
+  generate_app_pack:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v6
+
+      - name: Use OGC App Pack Generator Action
+        uses: MAAP-Project/ogc-app-pack-generator@1.0.0
+        with:
+          # Per-example inputs derived from the example directory
+          algorithm-configuration-path: ${{ inputs.example-dir }}/algorithm_config.yml
+          dockerfile-path: ${{ inputs.example-dir }}/Containerfile
+          deploy-app-pack: true
+          cwl-workflow-dir: ${{ inputs.example-dir }}/cwl_workflows
+          app-pack-register-endpoint: https://api.uat.maap-project.org/api/ogc/processes
+        env:
+          # MAAP token is required to deploy the process
+          MAAP_TOKEN: ${{ secrets.MAAP_TOKEN }}

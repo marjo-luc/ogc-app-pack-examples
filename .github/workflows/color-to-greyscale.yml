@@ -1,16 +1,16 @@
-name: write-string-to-file
+name: color-to-greyscale
 on:
   push:
     branches:
       - main
     paths:
-      - 'write_string_to_file/**'
-      - '.github/workflows/write-string-to-file.yml'
+      - 'color_to_greyscale/**'
+      - '.github/workflows/color-to-greyscale.yml'
       - '.github/workflows/build-app-pack.yml'
 
 jobs:
   build:
     uses: ./.github/workflows/build-app-pack.yml
     with:
-      example-dir: write_string_to_file
+      example-dir: color_to_greyscale
     secrets: inherit
