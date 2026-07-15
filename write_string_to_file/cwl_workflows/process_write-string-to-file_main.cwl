@@ -65,7 +65,7 @@ s:contributor:
   s:name: Marjorie Lucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: e151fe4f45da7b468555461470f0162ae34ff5f7
+s:commitHash: 599b49b5f4c878c502193f0c6bff1dea93983154
 s:dateCreated: 2026-07-15
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
