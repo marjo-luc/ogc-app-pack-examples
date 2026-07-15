@@ -48,7 +48,7 @@ $graph:
     NetworkAccess:
       networkAccess: true
     ResourceRequirement:
-      ramMin: 512
+      ramMin: 5
       coresMin: 1
       outdirMax: 100
   baseCommand: stac_clip.py
@@ -90,7 +90,7 @@ s:contributor:
   s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: c4586a57bae7eb60657796b9fc0c3caff0d9ae39
+s:commitHash: b7876be8f8e309d89602cbc5ec0f9dadcfd3d5c1
 s:dateCreated: 2026-07-15
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
