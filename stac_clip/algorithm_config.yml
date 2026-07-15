@@ -9,7 +9,7 @@ contributor: mlucas
 license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 release_notes: None
 run_command: stac_clip.py
-ram_min: 512 # mebibytes
+ram_min: 5 # mebibytes
 cores_min: 1
 outdir_max: 100 # mebibytes
 
