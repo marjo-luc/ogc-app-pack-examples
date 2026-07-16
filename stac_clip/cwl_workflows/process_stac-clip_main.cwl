@@ -54,9 +54,9 @@ $graph:
     NetworkAccess:
       networkAccess: true
     ResourceRequirement:
-      ramMin: 2048
+      ramMin: 5
       coresMin: 1
-      outdirMax: 500
+      outdirMax: 10
   baseCommand: run.py
   inputs:
     collection_id:
@@ -102,7 +102,7 @@ s:contributor:
   s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: 30413f08847a7bfae47b4fecc7a9b89ede5e421b
+s:commitHash: cf6b52289c74443327048006d19e019010c6f709
 s:dateCreated: 2026-07-15
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
