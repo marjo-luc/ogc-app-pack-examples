@@ -2,30 +2,31 @@ cwlVersion: v1.2
 $graph:
 - class: Workflow
   label: stac-clip
-  doc: Searches the MAAP STAC catalog for a granule, downloads a raster asset, clips
-    it to a bounding box, and emits a new STAC Item describing the clipped output.
+  doc: Searches the Earthdata CMR STAC catalog for a granule, downloads a raster asset
+    over HTTP, clips it to a bounding box, and emits a new STAC Item describing the
+    clipped output.
   id: stac-clip
   inputs:
     collection_id:
       doc: STAC collection id containing the granule
       label: Collection id
       type: string
-      default: ESACCI_Biomass_L4_AGB_V4_100m
+      default: HLSL30_2.0
     granule_id:
       doc: STAC item (granule) id to clip
       label: Granule id
       type: string
-      default: S50W080_ESACCI-BIOMASS-L4-AGB-MERGED-100m-2020-fv4.0
+      default: HLS.L30.T10SEG.2023198T184546.v2.0
     asset_name:
       doc: Name of the raster asset to clip
       label: Asset name
       type: string?
-      default: estimates
+      default: B04
     bbox:
       doc: Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326
       label: Bounding box
       type: string
-      default: -78 -58 -76 -56
+      default: -122.55 37.70 -122.35 37.85
     output_file:
       doc: Name of the output COG
       label: Output filename
@@ -54,9 +55,9 @@ $graph:
     NetworkAccess:
       networkAccess: true
     ResourceRequirement:
-      ramMin: 2048
+      ramMin: 5
       coresMin: 1
-      outdirMax: 500
+      outdirMax: 10
   baseCommand: run.py
   inputs:
     collection_id:
@@ -64,25 +65,25 @@ $graph:
       inputBinding:
         position: 1
         prefix: --collection_id
-      default: ESACCI_Biomass_L4_AGB_V4_100m
+      default: HLSL30_2.0
     granule_id:
       type: string
       inputBinding:
         position: 2
         prefix: --granule_id
-      default: S50W080_ESACCI-BIOMASS-L4-AGB-MERGED-100m-2020-fv4.0
+      default: HLS.L30.T10SEG.2023198T184546.v2.0
     asset_name:
       type: string?
       inputBinding:
         position: 3
         prefix: --asset_name
-      default: estimates
+      default: B04
     bbox:
       type: string
       inputBinding:
         position: 4
         prefix: --bbox
-      default: -78 -58 -76 -56
+      default: -122.55 37.70 -122.35 37.85
     output_file:
       type: string?
       inputBinding:

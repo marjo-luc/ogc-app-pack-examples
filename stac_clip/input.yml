@@ -1,5 +1,5 @@
-collection_id: ESACCI_Biomass_L4_AGB_V4_100m
-granule_id: S50W080_ESACCI-BIOMASS-L4-AGB-MERGED-100m-2020-fv4.0
-asset_name: estimates
-bbox: -78 -58 -76 -56
+collection_id: HLSL30_2.0
+granule_id: HLS.L30.T10SEG.2023198T184546.v2.0
+asset_name: B04
+bbox: -122.55 37.70 -122.35 37.85
 output_file: clipped.tif

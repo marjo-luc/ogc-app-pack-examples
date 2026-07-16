@@ -1,4 +1,4 @@
-algorithm_description: Searches the MAAP STAC catalog for a granule, downloads a raster asset, clips it to a bounding box, and emits a new STAC Item describing the clipped output.
+algorithm_description: Searches the Earthdata CMR STAC catalog for a granule, downloads a raster asset over HTTP, clips it to a bounding box, and emits a new STAC Item describing the clipped output.
 algorithm_name: stac-clip
 algorithm_version: main
 keywords: ogc, stac, raster
@@ -18,22 +18,22 @@ inputs:
     doc: STAC collection id containing the granule
     label: Collection id
     type: string
-    default: ESACCI_Biomass_L4_AGB_V4_100m
+    default: HLSL30_2.0
   - name: granule_id
     doc: STAC item (granule) id to clip
     label: Granule id
     type: string
-    default: S50W080_ESACCI-BIOMASS-L4-AGB-MERGED-100m-2020-fv4.0
+    default: HLS.L30.T10SEG.2023198T184546.v2.0
   - name: asset_name
     doc: Name of the raster asset to clip
     label: Asset name
     type: string?
-    default: estimates
+    default: B04
   - name: bbox
     doc: Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326
     label: Bounding box
     type: string
-    default: -78 -58 -76 -56
+    default: -122.55 37.70 -122.35 37.85
   - name: output_file
     doc: Name of the output COG
     label: Output filename
