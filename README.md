@@ -1,7 +1,7 @@
 # OGC Application Package Examples
 
 A collection of example [OGC Application Packages](https://docs.ogc.org/bp/20-089r1.html) for the
-[MAAP](https://docs.maap-project.org/). Each example is a small, self-contained processing
+[MAAP](https://maap-project.org/). Each example is a small, self-contained processing
 unit bundled with everything needed to register and run it as an
 OGC process.
 
@@ -74,25 +74,9 @@ cwltool estimate_pi/cwl_workflows/process_estimate-pi_main.cwl                  
 cwltool stac_clip/cwl_workflows/process_stac-clip_main.cwl                       stac_clip/input.yml
 ```
 
-> **Note:** the CWL file is generated and committed by the ogc-app-pack GitHub Action, so a freshly
-> added example may not have a checked-in `cwl_workflows/*.cwl` until that action runs.
-
 ### Examples that need network access or credentials
 
-`stac_clip` and `biomass_change` fetch remote data.
-
-- **`stac_clip`** downloads Earthdata-protected assets and needs a MAAP token. Export it and forward
-  it into the container:
-
-  ```bash
-  export MAAP_PGT="<your MAAP token>"
-  cwltool --preserve-environment MAAP_PGT \
-          stac_clip/cwl_workflows/process_stac-clip_main.cwl \
-          stac_clip/input.yml
-  ```
-
-- **`biomass_change`** reads MAAP-hosted S3 data and relies on the credentials the MAAP environment
-  injects into `MAAP()`. It is intended to run in the MAAP Hub; running it on an arbitrary
+`stac_clip` and `biomass_change` fetch remote data. They are intended to run in the MAAP Hub; running them on an arbitrary
   local machine requires equivalent MAAP/AWS credentials to be present in the container's
   environment.
 
