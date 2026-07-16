@@ -5,12 +5,12 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libexpat1 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./stac_clip/requirements.txt /app/requirements.txt
+COPY ./biomass_change/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt \
     && python3 -m ipykernel install --name python3
 
 # Notebook and its entrypoint wrapper
-COPY ./stac_clip/stac_clip.ipynb /app/stac_clip.ipynb
-COPY ./stac_clip/run.py /usr/local/bin/run.py
+COPY ./biomass_change/biomass_change.ipynb /app/biomass_change.ipynb
+COPY ./biomass_change/run.py /usr/local/bin/run.py
 
 RUN chmod +x /usr/local/bin/run.py

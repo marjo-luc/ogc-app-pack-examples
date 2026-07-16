@@ -1,0 +1,6 @@
+rasterio
+rio-stac
+pystac-client
+maap-py
+papermill
+ipykernel
