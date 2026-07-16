@@ -103,7 +103,7 @@ s:contributor:
   s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: 4d9d3ca4d6c05c12531acc51ff127e32789ebeb4
+s:commitHash: b765b83175c6f021831c2ec24dfeb2a4210ed408
 s:dateCreated: 2026-07-16
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
