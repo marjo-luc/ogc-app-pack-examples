@@ -13,5 +13,5 @@ jobs:
     uses: ./.github/workflows/generate-app-pack.yml
     with:
       example-dir: stac_clip
-      register-endpoint: https://api.maap-project.org/api/ogc/processes
+      register-endpoint: https://api.uat.maap-project.org/api/ogc/processes
     secrets: inherit
