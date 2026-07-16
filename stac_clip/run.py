@@ -17,28 +17,18 @@ def main() -> None:
     )
     parser.add_argument(
         "--collection_id",
-        required=True,
-        help="STAC collection id containing the granule.",
     )
     parser.add_argument(
         "--granule_id",
-        required=True,
-        help="STAC item (granule) id to clip.",
     )
     parser.add_argument(
         "--asset_name",
-        default="B04",
-        help="Name of the raster asset to clip (default: B04).",
     )
     parser.add_argument(
         "--bbox",
-        required=True,
-        help="Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326.",
     )
     parser.add_argument(
         "--output_file",
-        default="clipped.tif",
-        help="Name of the output COG (default: clipped.tif).",
     )
     args = parser.parse_args()
 
