@@ -13,4 +13,5 @@ jobs:
     uses: ./.github/workflows/generate-app-pack.yml
     with:
       example-dir: biomass_change
+      register-endpoint: https://api.uat.maap-project.org/api/ogc/processes
     secrets: inherit

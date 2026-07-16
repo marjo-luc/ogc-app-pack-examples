@@ -6,6 +6,10 @@ on:
         description: Path to the example directory to build and deploy
         required: true
         type: string
+      register-endpoint:
+        description: Link to algorithm registration endpoint
+        required: true
+        type: string
     secrets:
       MAAP_TOKEN:
         required: true
@@ -36,7 +40,7 @@ jobs:
           dockerfile-path: ${{ inputs.example-dir }}/Containerfile
           deploy-app-pack: true
           cwl-workflow-dir: ${{ inputs.example-dir }}/cwl_workflows
-          app-pack-register-endpoint: https://api.uat.maap-project.org/api/ogc/processes
+          app-pack-register-endpoint: ${{ inputs.register-endpoint }}
         env:
           # MAAP token is required to deploy the process
           MAAP_TOKEN: ${{ secrets.MAAP_TOKEN }}
