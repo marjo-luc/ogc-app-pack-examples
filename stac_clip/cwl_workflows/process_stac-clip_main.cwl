@@ -2,21 +2,15 @@ cwlVersion: v1.2
 $graph:
 - class: Workflow
   label: stac-clip
-  doc: Searches the Earthdata CMR STAC catalog for a granule, downloads a raster asset
-    over HTTP, clips it to a bounding box, and emits a new STAC Item describing the
-    clipped output.
+  doc: Reads a staged STAC Catalog, clips the requested raster asset to a bounding
+    box, and emits a new STAC Catalog describing the clipped output (OGC stage-in /
+    stage-out).
   id: stac-clip
   inputs:
-    collection_id:
-      doc: STAC collection id containing the granule
-      label: Collection id
-      type: string
-      default: HLSL30_2.0
-    granule_id:
-      doc: STAC item (granule) id to clip
-      label: Granule id
-      type: string
-      default: HLS.L30.T10SEG.2023198T184546.v2.0
+    input_catalog:
+      doc: Path to the staged STAC Catalog directory (contains catalog.json)
+      label: Input STAC Catalog
+      type: Directory
     asset_name:
       doc: Name of the raster asset to clip
       label: Asset name
@@ -40,8 +34,7 @@ $graph:
     process:
       run: '#main'
       in:
-        collection_id: collection_id
-        granule_id: granule_id
+        input_catalog: input_catalog
         asset_name: asset_name
         bbox: bbox
         output_file: output_file
@@ -60,34 +53,27 @@ $graph:
       outdirMax: 10
   baseCommand: run.py
   inputs:
-    collection_id:
-      type: string
+    input_catalog:
+      type: Directory
       inputBinding:
         position: 1
-        prefix: --collection_id
-      default: HLSL30_2.0
-    granule_id:
-      type: string
-      inputBinding:
-        position: 2
-        prefix: --granule_id
-      default: HLS.L30.T10SEG.2023198T184546.v2.0
+        prefix: --input_catalog
     asset_name:
       type: string?
       inputBinding:
-        position: 3
+        position: 2
         prefix: --asset_name
       default: B04
     bbox:
       type: string
       inputBinding:
-        position: 4
+        position: 3
         prefix: --bbox
       default: -122.55 37.70 -122.35 37.85
     output_file:
       type: string?
       inputBinding:
-        position: 5
+        position: 4
         prefix: --output_file
       default: clipped.tif
   outputs:

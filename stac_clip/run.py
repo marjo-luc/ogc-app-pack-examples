@@ -16,19 +16,24 @@ def main() -> None:
         description="Execute the stac_clip notebook with papermill."
     )
     parser.add_argument(
-        "--collection_id",
-    )
-    parser.add_argument(
-        "--granule_id",
+        "--input_catalog",
+        required=True,
+        help="Path to the STAC Catalog directory.",
     )
     parser.add_argument(
         "--asset_name",
+        default="B04",
+        help="Name of the raster asset to clip (default: B04).",
     )
     parser.add_argument(
         "--bbox",
+        required=True,
+        help="Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326.",
     )
     parser.add_argument(
         "--output_file",
+        default="clipped.tif",
+        help="Name of the output COG (default: clipped.tif).",
     )
     args = parser.parse_args()
 
@@ -40,8 +45,7 @@ def main() -> None:
         NOTEBOOK_PATH,
         executed_notebook,
         parameters={
-            "collection_id": args.collection_id,
-            "granule_id": args.granule_id,
+            "input_catalog": args.input_catalog,
             "asset_name": args.asset_name,
             "bbox": args.bbox,
             "output_file": args.output_file,

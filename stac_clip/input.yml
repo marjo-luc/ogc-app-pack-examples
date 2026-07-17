@@ -1,5 +1,15 @@
-collection_id: HLSL30_2.0
-granule_id: HLS.L30.T10SEG.2023198T184546.v2.0
+# Remote (MAAP) job file.
+#
+# The CWL command-line tool consumes a *Directory* (a staged STAC Catalog). The
+# caller does not upload a directory: it supplies a STAC reference *string* via
+# `location`, and MAAP's stage-in resolves that reference into the local catalog
+# directory before the container runs.
+#
+#   string in (process layer)  ->  stage-in  ->  Directory in (command-line tool)
+#
+input_catalog:
+  class: Directory
+  location: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
 asset_name: B04
 bbox: -122.55 37.70 -122.35 37.85
 output_file: clipped.tif

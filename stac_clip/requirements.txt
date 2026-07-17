@@ -1,6 +1,5 @@
 rasterio
 rio-stac
-pystac-client
-maap-py
+pystac
 papermill
 ipykernel

@@ -1,4 +1,4 @@
-algorithm_description: Searches the Earthdata CMR STAC catalog for a granule, downloads a raster asset over HTTP, clips it to a bounding box, and emits a new STAC Item describing the clipped output.
+algorithm_description: Reads a STAC Catalog, clips the requested raster asset to a bounding box, and emits a new STAC Catalog describing the clipped output.
 algorithm_name: stac-clip
 algorithm_version: main
 keywords: ogc, stac, raster
@@ -14,26 +14,19 @@ cores_min: 1
 outdir_max: 10 # mebibytes
 
 inputs:
-  - name: collection_id
-    doc: STAC collection id containing the granule
-    label: Collection id
-    type: string
-    default: HLSL30_2.0
-  - name: granule_id
-    doc: STAC item (granule) id to clip
-    label: Granule id
-    type: string
-    default: HLS.L30.T10SEG.2023198T184546.v2.0
+  - name: input_catalog
+    doc: Path to the STAC Catalog directory
+    label: Input STAC Catalog
+    type: Directory
+    default: input
   - name: asset_name
     doc: Name of the raster asset to clip
     label: Asset name
-    type: string?
-    default: B04
+    type: string
   - name: bbox
     doc: Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326
     label: Bounding box
     type: string
-    default: -122.55 37.70 -122.35 37.85
   - name: output_file
     doc: Name of the output COG
     label: Output filename

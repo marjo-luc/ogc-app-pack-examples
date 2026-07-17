@@ -34,7 +34,7 @@ action, which:
 | [Write String to File](#write-string-to-file) | Writes an input string to a text file. | Python script | Simplest example: string in, file out. |
 | [Estimate Pi](#estimate-pi) | Estimates π by numerically integrating 4/(1+x²) over [0, 1] (midpoint rule). | Compiled Fortran | A non-Python, compiled-binary process. |
 | [Color to Greyscale](#color-to-greyscale) | Converts an input image to greyscale using GDAL. | Python notebook (papermill) | `File` input; notebook-as-process. |
-| [STAC Raster Subset](#stac-raster-subset) | Searches the Earthdata CMR STAC catalog, downloads a raster asset, clips it to a bbox, and emits a new STAC Item. | Python notebook (papermill) | STAC in / STAC out; `maap-py` download; `rio-stac` output. |
+| [STAC Raster Subset](#stac-raster-subset) | Clips a raster asset from a staged STAC Catalog to a bbox and emits a new STAC Catalog. | Python notebook (papermill) | OGC stage-in / stage-out; STAC Catalog in / STAC Catalog out; `rio-stac` output. |
 | [Biomass Change](#biomass-change) | Pulls ESA CCI aboveground biomass tiles from MAAP S3 for two years and visualizes the apparent change over a region. | Python notebook (papermill) | S3 access via `maap-py`; multi-temporal; PNG visualization out. |
 
 # Running the CWL workflows locally
@@ -76,9 +76,14 @@ cwltool stac_clip/cwl_workflows/process_stac-clip_main.cwl                      
 
 ### Examples that need network access or credentials
 
-`stac_clip` and `biomass_change` fetch remote data. They are intended to run in the MAAP Hub; running them on an arbitrary
-  local machine requires equivalent MAAP/AWS credentials to be present in the container's
-  environment.
+`biomass_change` fetches remote data. It is intended to run in the MAAP Hub; running it on an
+arbitrary local machine requires equivalent MAAP/AWS credentials to be present in the container's
+environment.
 
-The credential-free examples (`write_string_to_file`, `estimate_pi`, `color_to_greyscale`) run
-locally with no extra setup.
+`stac_clip` follows the OGC stage-in / stage-out convention: on the platform, MAAP stages the input
+STAC Item into a local catalog directory before the container runs. It ships a sample staged catalog
+(`stac_clip/input/`) so it also runs locally with no credentials — `cwltool` mounts that directory
+as the `input_catalog` input.
+
+The credential-free examples (`write_string_to_file`, `estimate_pi`, `color_to_greyscale`,
+`stac_clip`) run locally with no extra setup.
