@@ -31,11 +31,10 @@ action, which:
 
 | Example | What it does | Runtime | Highlights |
 |---------|--------------|---------|------------|
-| [Write String to File](#write-string-to-file) | Writes an input string to a text file. | Python script | Simplest example: string in, file out. |
-| [Estimate Pi](#estimate-pi) | Estimates π by numerically integrating 4/(1+x²) over [0, 1] (midpoint rule). | Compiled Fortran | A non-Python, compiled-binary process. |
-| [Color to Greyscale](#color-to-greyscale) | Converts an input image to greyscale using GDAL. | Python notebook (papermill) | `File` input; notebook-as-process. |
-| [STAC Raster Subset](#stac-raster-subset) | Clips a raster asset from a staged STAC Catalog to a bbox and emits a new STAC Catalog. | Python notebook (papermill) | OGC stage-in / stage-out; STAC Catalog in / STAC Catalog out; `rio-stac` output. |
-| [Biomass Change](#biomass-change) | Pulls ESA CCI aboveground biomass tiles from MAAP S3 for two years and visualizes the apparent change over a region. | Python notebook (papermill) | S3 access via `maap-py`; multi-temporal; PNG visualization out. |
+| Write String to File | Writes an input string to a text file. | Python script | Simplest example: string in, file out. |
+| Estimate Pi | Estimates π by numerically integrating 4/(1+x²) over [0, 1] (midpoint rule). | Compiled Fortran | A non-Python, compiled-binary process. |
+| Color to Greyscale | Converts an input image to greyscale using GDAL. | Python notebook (papermill) | `File` input; notebook-as-process. |
+| STAC Raster Subset | Clips a raster asset from a staged STAC Catalog to a bbox and emits a new STAC Catalog. | Python notebook (papermill) | OGC stage-in / stage-out; STAC Catalog in / STAC Catalog out; `rio-stac` output. |
 
 # Running the CWL workflows locally
 
@@ -70,15 +69,11 @@ Other examples follow the same pattern — point `cwltool` at the example's
 
 ```bash
 cwltool write_string_to_file/cwl_workflows/process_write-string-to-file_main.cwl write_string_to_file/input.yml
-cwltool estimate_pi/cwl_workflows/process_estimate-pi_main.cwl                   estimate_pi/input.yml
-cwltool stac_clip/cwl_workflows/process_stac-clip_main.cwl                       stac_clip/input.yml
+cwltool estimate_pi/cwl_workflows/process_estimate-pi_main.cwl estimate_pi/input.yml
+cwltool stac_clip/cwl_workflows/process_stac-clip_main.cwl stac_clip/input.yml
 ```
 
 ### Examples that need network access or credentials
-
-`biomass_change` fetches remote data. It is intended to run in the MAAP Hub; running it on an
-arbitrary local machine requires equivalent MAAP/AWS credentials to be present in the container's
-environment.
 
 `stac_clip` follows the OGC stage-in / stage-out convention: on the platform, MAAP stages the input
 STAC Item into a local catalog directory before the container runs. It ships a sample staged catalog
