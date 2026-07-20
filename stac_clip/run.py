@@ -22,7 +22,6 @@ def main() -> None:
     )
     parser.add_argument(
         "--asset_name",
-        default="B04",
         help="Name of the raster asset to clip (default: B04).",
     )
     parser.add_argument(
