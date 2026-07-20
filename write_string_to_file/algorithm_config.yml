@@ -4,8 +4,8 @@ algorithm_version: main
 keywords: ogc
 code_repository: https://github.com/marjo-luc/ogc-app-pack-examples.git
 citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
-author: Marjorie Lucas
-contributor: Marjorie Lucas
+author: mlucas
+contributor: mlucas
 license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 release_notes: None
 run_command: write_string_to_file.py
