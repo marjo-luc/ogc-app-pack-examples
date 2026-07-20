@@ -9,9 +9,6 @@ $graph:
       doc: Input image to convert to greyscale
       label: Input image
       type: File
-      default:
-        class: File
-        path: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/color_to_greyscale/nasa_maap_logo.png
     output_file:
       doc: Name of the output greyscale image
       label: Output filename
@@ -47,9 +44,6 @@ $graph:
       inputBinding:
         position: 1
         prefix: --input_image
-      default:
-        class: File
-        path: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/color_to_greyscale/nasa_maap_logo.png
     output_file:
       type: string?
       inputBinding:
@@ -69,7 +63,7 @@ s:contributor:
   s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: 0bfef22318935fc49cdeba46b2f988dee30dfb9e
+s:commitHash: e9462da03b0771958a3a3a5e3fa71a68c576bcca
 s:dateCreated: 2026-07-20
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
