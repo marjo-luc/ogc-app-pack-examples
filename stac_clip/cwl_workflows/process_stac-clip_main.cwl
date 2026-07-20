@@ -10,19 +10,14 @@ $graph:
       doc: Path to the STAC Catalog directory
       label: Input STAC Catalog
       type: Directory
-      default:
-        class: Directory
-        path: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
     asset_name:
       doc: Name of the raster asset to clip
       label: Asset name
       type: string
-      default: B04
     bbox:
       doc: Clip bounding box as 'MINX MINY MAXX MAXY' in EPSG:4326
       label: Bounding box
       type: string
-      default: -122.55 37.70 -122.35 37.85
     output_file:
       doc: Name of the output COG
       label: Output filename
@@ -60,21 +55,16 @@ $graph:
       inputBinding:
         position: 1
         prefix: --input_catalog
-      default:
-        class: Directory
-        path: https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30_2.0/items/HLS.L30.T10SEG.2023198T184546.v2.0
     asset_name:
       type: string
       inputBinding:
         position: 2
         prefix: --asset_name
-      default: B04
     bbox:
       type: string
       inputBinding:
         position: 3
         prefix: --bbox
-      default: -122.55 37.70 -122.35 37.85
     output_file:
       type: string?
       inputBinding:
@@ -94,7 +84,7 @@ s:contributor:
   s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: fb4d2415ed96a3d568962440dc36c598dbb16a8e
+s:commitHash: 5fb00aa4817a01c0eb79ad82d2b8c5245d805f4d
 s:dateCreated: 2026-07-20
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
