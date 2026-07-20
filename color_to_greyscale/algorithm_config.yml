@@ -18,7 +18,6 @@ inputs:
     doc: Input image to convert to greyscale
     label: Input image
     type: File
-    default: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/color_to_greyscale/nasa_maap_logo.png
   - name: output_file
     doc: Name of the output greyscale image
     label: Output filename
