@@ -59,14 +59,14 @@ $graph:
       type: Directory
 s:author:
 - class: s:Person
-  s:name: Marjorie Lucas
+  s:name: mlucas
 s:contributor:
 - class: s:Person
-  s:name: Marjorie Lucas
+  s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: 2986d72c70c2fdd0792ebd000ebe1ab674535569
-s:dateCreated: 2026-07-16
+s:commitHash: aacdb5faed36d5ff327bd93507d57e151501e492
+s:dateCreated: 2026-07-20
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
 s:version: main
