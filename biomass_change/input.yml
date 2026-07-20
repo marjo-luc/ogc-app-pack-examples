@@ -1,7 +1,0 @@
-collection_id: ESACCI_Biomass_L4_AGB_V4_100m
-tile_id: S10W070
-year_start: 2019
-year_end: 2020
-asset_name: estimates
-bbox: -65 -12 -63 -10
-output_file: biomass_change.png

@@ -1,6 +1,0 @@
-rasterio
-pystac-client
-maap-py
-matplotlib
-papermill
-ipykernel

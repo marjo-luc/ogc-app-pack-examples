@@ -1,7 +1,7 @@
 algorithm_description: Estimates pi by numerically integrating 4/(1+x^2) over [0, 1] using the midpoint rule.
 algorithm_name: estimate-pi
 algorithm_version: main
-keywords: ogc, fortran, math
+keywords: ogc, fortran
 code_repository: https://github.com/marjo-luc/ogc-app-pack-examples.git
 citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 author: mlucas
@@ -20,7 +20,7 @@ inputs:
     type: int
     default: 1000000
   - name: output_file
-    doc: Name of the output text file
+    doc: Name of the output file
     label: Output filename
     type: string?
     default: pi.txt

@@ -1,7 +1,5 @@
 FROM gcc:14
 
-# Compile the Fortran program and install it on PATH so the CWL
-# baseCommand (estimate_pi) resolves when the workflow runs.
 COPY ./estimate_pi/estimate_pi.f90 /app/estimate_pi.f90
 
 RUN gfortran -O2 -o /usr/local/bin/estimate_pi /app/estimate_pi.f90
