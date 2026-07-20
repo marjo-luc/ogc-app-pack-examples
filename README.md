@@ -31,10 +31,10 @@ action, which:
 
 | Example | What it does | Runtime | Highlights |
 |---------|--------------|---------|------------|
-| Write String to File | Writes an input string to a text file. | Python script | Simplest example: string in, file out. |
-| Estimate Pi | Estimates π by numerically integrating 4/(1+x²) over [0, 1] (midpoint rule). | Compiled Fortran | A non-Python, compiled-binary process. |
-| Color to Greyscale | Converts an input image to greyscale using GDAL. | Python notebook (papermill) | `File` input; notebook-as-process. |
-| STAC Raster Subset | Clips a raster asset from a staged STAC Catalog to a bbox and emits a new STAC Catalog. | Python notebook (papermill) | OGC stage-in / stage-out; STAC Catalog in / STAC Catalog out; `rio-stac` output. |
+| Write String to File | Writes an input string to a text file. | Python script | Simplest example: string in, file out |
+| Estimate Pi | Estimates π by numerically integrating 4/(1+x²) over [0, 1] (midpoint rule). | Compiled Fortran | A non-Python, compiled-binary process |
+| Color to Greyscale | Converts an input image to greyscale using GDAL. | Python notebook (papermill) | `File` input; Jupyter notebook |
+| STAC Raster Subset | Clips a raster asset from a staged STAC Catalog to a bbox and emits a new STAC Catalog. | Python notebook (papermill) | STAC I/O; Jupyter notebook |
 
 # Running the CWL workflows locally
 
@@ -73,12 +73,10 @@ cwltool estimate_pi/cwl_workflows/process_estimate-pi_main.cwl estimate_pi/input
 cwltool stac_clip/cwl_workflows/process_stac-clip_main.cwl stac_clip/input.yml
 ```
 
-### Examples that need network access or credentials
+### Examples that need extra setup to run locally
 
 `stac_clip` follows the OGC stage-in / stage-out convention: on the platform, MAAP stages the input
-STAC Item into a local catalog directory before the container runs. It ships a sample staged catalog
-(`stac_clip/input/`) so it also runs locally with no credentials — `cwltool` mounts that directory
-as the `input_catalog` input.
+STAC Item into a local catalog directory before the container runs. To run this example locally, 
+emulate this behavior by creating a directory named `input` and download the STAC item to this directory.
 
-The credential-free examples (`write_string_to_file`, `estimate_pi`, `color_to_greyscale`,
-`stac_clip`) run locally with no extra setup.
+The following examples run locally with no extra setup: `write_string_to_file`, `estimate_pi`, `color_to_greyscale`.
