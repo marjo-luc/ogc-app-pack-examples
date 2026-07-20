@@ -12,7 +12,7 @@ $graph:
       type: int
       default: 1000000
     output_file:
-      doc: Name of the output text file
+      doc: Name of the output file
       label: Output filename
       type: string?
       default: pi.txt
@@ -66,13 +66,13 @@ s:contributor:
   s:name: mlucas
 s:citation: https://github.com/marjo-luc/ogc-app-pack-examples.git
 s:codeRepository: https://github.com/marjo-luc/ogc-app-pack-examples.git
-s:commitHash: d440950b09019b7de76e6d3661ea3c5d3e675db0
-s:dateCreated: 2026-07-15
+s:commitHash: d22d28ee81b22eb62c590c32c2e814a3ecf8e2db
+s:dateCreated: 2026-07-20
 s:license: https://raw.githubusercontent.com/marjo-luc/ogc-app-pack-examples/refs/heads/main/LICENSE
 s:softwareVersion: 1.0.0
 s:version: main
 s:releaseNotes: None
-s:keywords: ogc, fortran, math
+s:keywords: ogc, fortran
 $namespaces:
   s: https://schema.org/
 $schemas:
