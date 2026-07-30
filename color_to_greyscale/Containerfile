@@ -5,7 +5,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir --break-system-packages numpy papermill ipykernel \
+COPY ./color_to_greyscale/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --break-system-packages -r /app/requirements.txt \
     && python3 -m ipykernel install --name python3
 
 # Notebook and its entrypoint wrapper
