@@ -5,7 +5,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "pip"
+    directory: "/color_to_greyscale"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "pip"
+    directory: "/stac_clip"
     schedule:
       interval: "monthly"

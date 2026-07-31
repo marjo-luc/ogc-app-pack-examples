@@ -14,7 +14,7 @@ container image, and resource requirements. A platform (like MAAP) can then inge
 and run the process on demand, wiring the declared inputs to command-line arguments and collecting
 the declared outputs.
 
-## The ogc-app-pack-genreator GitHub Action
+## The ogc-app-pack-generator GitHub Action
 
 Pushing a change under an example directory triggers a per-example GitHub workflow (e.g.
 `.github/workflows/stac-clip.yml`), which calls the shared
