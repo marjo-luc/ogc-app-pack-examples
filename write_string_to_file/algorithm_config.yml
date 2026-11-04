@@ -1,5 +1,5 @@
 algorithm_description: Writes an input string to a text file.
-algorithm_name: write-string-to-file
+algorithm_name: write-string-to-file-gha
 algorithm_version: main
 keywords: ogc
 code_repository: https://github.com/marjo-luc/ogc-app-pack-examples.git
